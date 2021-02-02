@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const favicon = require("serve-favicon");
 const path = require("path");
 const app = express();
+const userRoute = require("./routes/userRoutes.js")
 
 const PORT = process.env.PORT || 3001;
 
@@ -32,6 +33,9 @@ connection.on("error", (err) => {
 
 app.use(express.static("client/build"));
 
+//telling express to read json data 
+app.use(express.json())
+
 //handling the favicon error
 app.use(favicon(path.join(__dirname, "./client/build", "favicon.ico")));
 
@@ -45,6 +49,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
+app.use("/api/users", userRoute)
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

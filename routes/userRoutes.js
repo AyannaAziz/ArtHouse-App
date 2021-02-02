@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const routes = require("express").Router();
-const Users = require("/users.js")
+const Users = require("../models/users.js")
 
 routes.post("/", (req, res) => {
     
@@ -24,4 +24,4 @@ routes.post("/", (req, res) => {
 
     
 });
-
+ module.exports = routes
