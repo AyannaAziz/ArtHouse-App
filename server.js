@@ -32,7 +32,7 @@ mongoose.connect(
   app.use(express.static("client/build"));
 
   //handling the favicon error
-  app.use(favicon(path.join(__dirname, "./client/public","favicon.ico")))
+  app.use(favicon(path.join(__dirname, "./client/build","favicon.ico")));
 
 
 //get route to test
@@ -41,7 +41,7 @@ app.get("/api/config" , (req, res) => {
 });
 
 //wildcard route
-app.get("*", (req, res) => {
+app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
   });
 
