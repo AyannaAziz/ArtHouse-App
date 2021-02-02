@@ -10,41 +10,41 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/Arthouse",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-      useCreateIndex: true,
-    }
-  );
-  
-  const connection = mongoose.connection;
-  
-  connection.on("connected", () => {
-    console.log("Mongoose successfully connected!");
-  });
-  
-  connection.on("error", (err) => {
-    console.log("Mongoose connection error: ", err);
-  });
+  process.env.MONGODB_URI ||
+    "mongodb+srv://aazizz:kitty123@cluster0.uvak5.mongodb.net/Arthouse?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  }
+);
 
-  app.use(express.static("client/build"));
+const connection = mongoose.connection;
 
-  //handling the favicon error
-  app.use(favicon(path.join(__dirname, "./client/build","favicon.ico")));
+connection.on("connected", () => {
+  console.log("Mongoose successfully connected!");
+});
 
+connection.on("error", (err) => {
+  console.log("Mongoose connection error: ", err);
+});
+
+app.use(express.static("client/build"));
+
+//handling the favicon error
+app.use(favicon(path.join(__dirname, "./client/build", "favicon.ico")));
 
 //get route to test
-app.get("/api/config" , (req, res) => {
-    res.json({ success: true});
+app.get("/api/config", (req, res) => {
+  res.json({ success: true });
 });
 
 //wildcard route
-app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build/index.html"));
-  });
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
