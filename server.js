@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const favicon = require("serve-favicon");
+const path = require("path");
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -28,6 +30,10 @@ mongoose.connect(
   });
 
   app.use(express.static("client/build"));
+
+  //handling the favicon error
+  app.use(favicon(path.join(__dirname, "./client/public","favicon.ico")))
+
 
 //get route to test
 app.get("/api/config" , (req, res) => {
