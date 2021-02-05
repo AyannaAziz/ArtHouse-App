@@ -4,7 +4,7 @@ const Users = require("../models/users.js")
 
 routes.post("/", (req, res) => {
     
-    const usr_name = req.body.usr_name;
+    const usr_name = req.body.usr_name.toLowerCase();
     const profile_photo = req.body.profile_photo;
     const photos = req.body.photos;
     const bio = req.body.bio;
@@ -24,4 +24,36 @@ routes.post("/", (req, res) => {
 
     
 });
+
+//get request to return all users from user model
+routes.get("/", (req, res) => {
+    Users.find({}, (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.json(data);
+      }
+    });
+  });
+
+// GET method to retrun a specific user  
+routes.get('/:user', (req, res) => {
+    Users.findOne(
+        {
+          usr_name: req.params.user.toLowerCase()
+        }, 
+        (error, data) => {
+          if (error) {
+            res.send(error);
+          } else {
+            res.send(data);
+          }
+        }
+      );
+
+  });
+
+  
+  
  module.exports = routes
+
