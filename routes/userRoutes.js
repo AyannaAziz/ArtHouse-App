@@ -2,23 +2,23 @@ const mongoose = require("mongoose");
 const routes = require("express").Router();
 const Users = require("../models/users.js");
 
-//
+//initial post to send user data to db
 routes.post("/", (req, res) => {
   const usr_name = req.body.usr_name.toLowerCase();
   const profile_photo = req.body.profile_photo || "";
   const photos = req.body.photos || [];
   const bio = req.body.bio || "";
   
-
+//queries our db to see if the name entered matches any existing name, throws err if true
   Users.find({ usr_name}, (err,data) => {
     if (err) return res.status(500).send(err.message);
     console.log(data);
     if (data.length > 0) return res.status(400).send("This username is taken!");
-
+ //requires user to input photo, sends error if blank
     if (!profile_photo) {
         return res.status(400).send("Profile photo is required!");
       }
-    
+    //create user object
       const user = Users.create(
         {
           usr_name,
@@ -36,7 +36,7 @@ routes.post("/", (req, res) => {
 
 });
 
-//get request to return all users from user model
+//GET request to return all users from user model
 routes.get("/", (req, res) => {
   Users.find({}, (error, data) => {
     if (error) {
@@ -47,7 +47,7 @@ routes.get("/", (req, res) => {
   });
 });
 
-// GET method to retrun a specific user
+// GET request to return a specific user by their username
 routes.get("/:user", (req, res) => {
   Users.findOne(
     {
@@ -63,7 +63,7 @@ routes.get("/:user", (req, res) => {
   );
 });
 
-//
+//POST request allows users to update one or many any fields
 routes.put("/", (req, res) => {
   const usr_name = req.body.usr_name.toLowerCase();
   const profile_photo = req.body.profile_photo || "";
