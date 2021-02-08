@@ -9,7 +9,7 @@ routes.post("/", (req, res) => {
   const photos = req.body.photos || [];
   const bio = req.body.bio || "";
   
-//queries our db to see if the name entered matches any existing name, throws err if true
+//queries db to see if the name entered matches any existing name, throws err if true
   Users.find({ usr_name}, (err,data) => {
     if (err) return res.status(500).send(err.message);
     console.log(data);
@@ -18,6 +18,7 @@ routes.post("/", (req, res) => {
     if (!profile_photo) {
         return res.status(400).send("Profile photo is required!");
       }
+      
     //create user object
       const user = Users.create(
         {

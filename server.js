@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const favicon = require("serve-favicon");
 const path = require("path");
 const app = express();
-const userRoute = require("./routes/userRoutes.js")
+const userRoute = require("./routes/userRoutes.js");
+const postRoute = require("./routes/postRoutes.js");
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -49,7 +51,12 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
+
 app.use("/api/users", userRoute)
+
+app.use("/api/post", postRoute)
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server isss running on http://localhost:${PORT}`);
 });
+
+

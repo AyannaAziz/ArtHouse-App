@@ -1,13 +1,16 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose; 
 
-// created the user model
-const posts = new Schema ({
+// created the post model
+const post = new Schema ({
     usr_name: String,
+    profile_photo: String,
+    title: String,
     photos: Array,
-    content: String,
+    post_text: String,
     comments: Array,
+    post_time: Date
 })
 
-//Exporting the user model object 
-module.exports = mongoose.model("Posts", post)
+//Exporting the post model object 
+module.exports = mongoose.model("Post", post)
