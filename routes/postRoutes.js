@@ -40,7 +40,19 @@ routes.post("/", (req, res) => {
   
 
   
+//GET request to return all posts from post model sorted by date
+routes.get("/", (req, res) => {
+    Posts.find({}, null, {sort: {date: 1}}, (error, data) => {
+      if (error) {
+        res.json({message: err.message , error: true});
+      } else {
 
+
+
+        res.json(data);
+      }
+    });
+  });
 
   module.exports = routes;
   
