@@ -87,4 +87,13 @@ routes.put("/", (req, res) => {
   );
 });
 
+//Delete route so user can delete profile
+routes.delete("/", (req, res) => {
+ Users.deleteOne({usr_name: req.body.usr_name}, (err) => {
+   if (err) res.status(500).json({ message: err.message, error: true});
+   res.status(200).json({ message: "Profile deleted" });
+ });
+});
+
+
 module.exports = routes;
