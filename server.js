@@ -55,8 +55,11 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoute)
 
 app.use("/api/post", postRoute)
+
+app.use(express.static('./client/build'))
+
 app.listen(PORT, () => {
-  console.log(`Server isss running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 
