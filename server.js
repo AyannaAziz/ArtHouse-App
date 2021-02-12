@@ -56,7 +56,7 @@ app.use("/api/users", userRoute)
 
 app.use("/api/post", postRoute)
 
-app.use(express.static('./client/build'))
+// app.use(express.static('./client/build'))
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
