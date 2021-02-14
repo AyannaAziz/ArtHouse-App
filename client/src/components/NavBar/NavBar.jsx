@@ -7,7 +7,7 @@ import Signup from "../../containers/SignUp/SignUp";
 import { Row, Col } from 'antd';
 
 const NavBar = () => {
-  //    adding state for LoingButton
+  //    adding state for LoginButton
   // const [login, setLogin] = useState("Loaded");
 
   return (

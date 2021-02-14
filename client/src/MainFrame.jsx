@@ -14,7 +14,7 @@ const MainFrame = ()=> {
         <Layout>
         <Header style={TheStyling}></Header><NavBar/>
         <Layout>
-          <Sider><SideNav/></Sider>
+          <Sider style={TheStyling}><SideNav/></Sider>
           
         </Layout>
         <Footer>Footer</Footer>
