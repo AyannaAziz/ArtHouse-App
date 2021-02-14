@@ -1,21 +1,27 @@
-import logo from './logo.svg';
-import About from "./containers/About/About.jsx"
-import {useEffect} from "react";
-import NavBar from "./components/NavBar/NavBar.jsx"
-
+import logo from "./logo.svg";
+import About from "./containers/About/About.jsx";
+import { useEffect } from "react";
+import NavBar from "./components/NavBar/NavBar.jsx";
+import { BrowserRouter as Router, Switch, Route, useHistory } from "react-router-dom";
+import Feed from "./containers/Feed/Feed.jsx";
+import Login from "./containers/Login/Login";
+import SideNav from "./components/SideNavBar/SideNav"
+import MainFrame from './MainFrame.jsx'
 function App() {
-  
-  useEffect(() => {
-const fetcher = async () => {
-const results = await fetch("/api/users")
-console.log(await results.json())
-}
-fetcher()
-  }, [])
+  let history = useHistory()
+
+ 
   return (
-    <div className="App">
-      <NavBar/>
-    </div>
+    <>
+    
+
+  
+    <MainFrame/>
+       
+
+      
+  
+    </>
   );
 }
 
