@@ -1,13 +1,16 @@
 const mongoose = require("mongoose");
-const routes = require("express").Router();
+const router = require("express").Router();
 const Users = require("../models/users.js");
 const { update } = require("../models/users.js");
 
 //initial post to send user data to db
-routes.post("/", (req, res) => {
+router.route("/")
+.post( (req, res) => {
   const usr_name = req.body.usr_name.toLowerCase();
   const profile_photo = req.body.profile_photo || "";
   const photos = req.body.photos || [];
+  const email = req.body.email;
+  const password = req.body.password;
   const bio = req.body.bio || "";
 
   //queries db to see if the name entered matches any existing name, throws err if true
@@ -27,6 +30,8 @@ routes.post("/", (req, res) => {
         profile_photo,
         photos,
         bio,
+        email,
+        password
       },
       (err, data) => {
         if (err) return res.status(500).send(err.message);
@@ -34,10 +39,9 @@ routes.post("/", (req, res) => {
       }
     );
   });
-});
-
-//GET request to return all users from user model
-routes.get("/", (req, res) => {
+})
+.get( (req, res) => {
+  //GET request to return all users from user model
   Users.find({}, (error, data) => {
     if (error) {
       res.send(error);
@@ -45,26 +49,9 @@ routes.get("/", (req, res) => {
       res.json(data);
     }
   });
-});
-
-// GET request to return a specific user by their username
-routes.get("/:user", (req, res) => {
-  Users.findOne(
-    {
-      usr_name: req.params.user.toLowerCase(),
-    },
-    (error, data) => {
-      if (error) {
-        res.send(error);
-      } else {
-        res.send(data);
-      }
-    }
-  );
-});
-
-//POST request allows users to update one or many any fields
-routes.put("/", (req, res) => {
+}) 
+.put( (req, res) => {
+  //PUT request allows users to update one or many any fields
   const usr_name = req.body.usr_name.toLowerCase();
   const profile_photo = req.body.profile_photo;
   const photos = req.body.photos;
@@ -85,15 +72,34 @@ routes.put("/", (req, res) => {
       }
     }
   );
+})
+.delete( (req, res) => {
+  //Delete route so user can delete profile
+  Users.deleteOne({usr_name: req.body.usr_name}, (err) => {
+    if (err) res.status(500).json({ message: err.message, error: true});
+    res.status(200).json({ message: "Profile deleted" });
+  });
+ });
+
+
+
+// GET request to return a specific user by their username
+router.get("/:user", (req, res) => {
+  Users.findOne(
+    {
+      usr_name: req.params.user.toLowerCase(),
+    },
+    (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+    }
+  );
 });
 
-//Delete route so user can delete profile
-routes.delete("/", (req, res) => {
- Users.deleteOne({usr_name: req.body.usr_name}, (err) => {
-   if (err) res.status(500).json({ message: err.message, error: true});
-   res.status(200).json({ message: "Profile deleted" });
- });
-});
+
 
 
 module.exports = routes;
