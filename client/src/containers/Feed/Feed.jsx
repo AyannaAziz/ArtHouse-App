@@ -13,7 +13,7 @@ const Feed = () => {
   <div>
     
    <Row>
-   <Link to="/admin">Admin</Link>
+   
       <Col span={8}> <Button type="primary">Primary Button</Button></Col>
       <Col span={8} offset={8}>
       <Input placeholder="default size" prefix={<UserOutlined />} />
