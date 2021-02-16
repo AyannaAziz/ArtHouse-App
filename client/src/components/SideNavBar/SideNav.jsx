@@ -6,7 +6,7 @@ import {
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import Login from "../../containers/Login/Login";
 import Feed from "../../containers/Feed/Feed";
-import styles from "./style.module.css";
+import styles from "./SideNav.css";
 import { Row, Col } from "antd";
 
 const SideNav = () => {
