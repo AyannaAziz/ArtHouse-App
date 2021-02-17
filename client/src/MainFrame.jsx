@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import Login from "./containers/Login/Login";
 import Admin from "./containers/Admin/Admin";
 import Feed from "./containers/Feed/Feed";
+import SignUp from './containers/SignUp/SignUp'
+
 import { Row, Col } from 'antd';
 
 const SideNavStyling = {
@@ -19,6 +21,7 @@ const NavStyling = {
   width: "100%",
   height: "100px",
   display: "flex",
+  
 };
 const MainFrame = () => {
   const { Header, Footer, Sider, Content } = Layout;
@@ -41,6 +44,9 @@ const MainFrame = () => {
         </Route>
         <Route path="/admin">
           <Admin />
+        </Route>
+        <Route path ="/signup">
+          <SignUp />
         </Route>
       </Switch>
         </Content>

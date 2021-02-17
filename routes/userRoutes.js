@@ -79,12 +79,10 @@ router.route("/")
     if (err) res.status(500).json({ message: err.message, error: true});
     res.status(200).json({ message: "Profile deleted" });
   });
- });
+ })
 
-
-
-// GET request to return a specific user by their username
 router.get("/:user", (req, res) => {
+  // GET request to return a specific user by their username
   Users.findOne(
     {
       usr_name: req.params.user.toLowerCase(),
@@ -102,4 +100,4 @@ router.get("/:user", (req, res) => {
 
 
 
-module.exports = routes;
+module.exports = router;

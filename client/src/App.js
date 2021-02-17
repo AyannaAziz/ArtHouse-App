@@ -7,7 +7,6 @@ import Login from "./containers/Login/Login";
 import SideNav from "./components/SideNavBar/SideNav"
 import MainFrame from './MainFrame.jsx'
 
-
 function App() {
   
 

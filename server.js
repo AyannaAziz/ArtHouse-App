@@ -39,7 +39,7 @@ app.use(express.static("client/build"));
 app.use(express.json())
 
 //handling the favicon error
-app.use(favicon(path.join(__dirname, "./client/build", "favicon.ico")));
+// app.use(favicon(path.join(__dirname, "./client/build", "favicon.ico")));
 
 //get route to test
 app.get("/api/config", (req, res) => {
