@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import { Form, Input, Button, Select } from "antd";
 
+
 import { Upload, message } from 'antd';
+
+import "./SignUp.css";
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-
-
 
 
 const { Option } = Select;
@@ -42,12 +43,39 @@ function getBase64(img, callback) {
   }
 
   
+  
 const Demo = () => {
   const [form] = Form.useForm();
 
-//   const [loading, setLoading] = useState(false)
-//   const [imageUrl, setimageUrl] = useState('')
-//   const [uploadButton, setuploadButton] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [imageUrl, setimageUrl] = useState('')
+ // const [uploadButton, setuploadButton] = useState('')
+
+  const handleChange = info => {
+    if (info.file.status === 'uploading') {
+      setLoading(true)
+      return;
+    }
+    if (info.file.status === 'done') {
+      // Get this url from response in real world.
+      console.log('This should be our file: ', info.file.originFileObj);
+      getBase64(info.file.originFileObj, imageUrl => {
+        setimageUrl(info.file.originFileObj)
+        setLoading(false)
+        // this.setState({
+        //   imageUrl,
+        //   loading: false,
+        // }
+      });
+    }
+  };
+
+  const uploadButton = (
+      <div>
+        {loading ? <LoadingOutlined /> : <PlusOutlined />}
+        <div style={{ marginTop: 8 }}>Upload</div>
+      </div>
+    );
 
   const onGenderChange = (value) => {
     console.log("in the switch");
@@ -162,21 +190,21 @@ const Demo = () => {
       </Form.Item>
 
       {/* upload avatar */}
-      {/* <Upload
+      <Upload
         name="avatar"
         listType="picture-card"
         className="avatar-uploader"
         showUploadList={false}
         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
         beforeUpload={beforeUpload}
-        onChange={this.handleChange}
+        onChange={handleChange}
       >
         {imageUrl ? (
           <img src={imageUrl} alt="avatar" style={{ width: "100%" }} />
         ) : (
           uploadButton
         )}
-      </Upload> */}
+      </Upload>
 
       {/* end avi */}
 
