@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import Login from "./containers/Login/Login";
 import Admin from "./containers/Admin/Admin";
 import Feed from "./containers/Feed/Feed";
-import SignUp from './containers/SignUp/SignUp'
+import SignUp from './containers/SignUp/SignUp';
+import Demo from './containers/SignUp/Demo';
 
 import { Row, Col } from 'antd';
 
@@ -46,7 +47,7 @@ const MainFrame = () => {
           <Admin />
         </Route>
         <Route path ="/signup">
-          <SignUp />
+          <Demo />
         </Route>
       </Switch>
         </Content>

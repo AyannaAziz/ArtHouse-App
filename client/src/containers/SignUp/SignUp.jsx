@@ -1,9 +1,10 @@
 import React from "react";
+import { Form, Input, Button, Checkbox } from 'antd';
 
 const Signup
  = () => {
     return (
-        <h1>This is the Signup page</h1>
+        <Form></Form>
         
     )
 }
