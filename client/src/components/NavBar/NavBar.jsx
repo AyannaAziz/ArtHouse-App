@@ -16,7 +16,7 @@ const NavBar = () => {
       <div className={styles.wrapper}>
         <h1>ArtHouse</h1>
         <ul className = "navbarUl"> 
-        <li>
+        <li> 
           <Link to="/login">Login</Link>
         </li>
         <li>
