@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Form, Input, Button, Checkbox, Typography, Col, Row} from "antd";
+import "./Login.css";
 
+const { Title } = Typography;
 // const Login = () => {
 //     return (
 //         <h1>This is the login page</h1>
@@ -10,8 +13,7 @@ import { Link } from "react-router-dom";
 
 // export default Login;
 
-import { Form, Input, Button, Checkbox } from "antd";
-import "./Login.css";
+
 
 const layout = {
   labelCol: {
@@ -49,8 +51,13 @@ const Login = () => {
   };
 
   return (
-    <Form
-      {...layout}
+    <div> 
+      <Title style={{textAlign: "center"}}> 
+        Welcome to ArtHouse!
+      </Title>
+    
+    <Form style={{display:"flex" , justifyContent: "center", flexDirection: "column"}}
+      // {...layout}
       name="basic"
       initialValues={{
         remember: true,
@@ -58,6 +65,10 @@ const Login = () => {
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
+      <Row justify="center">
+
+     
+      <Col span= {12}>
       <Form.Item
         label="Username"
         name="usr_name"
@@ -97,7 +108,10 @@ const Login = () => {
           Login
         </Button>
       </Form.Item>
+      </Col>
+      </Row>
     </Form>
+    </div>
   );
 };
 

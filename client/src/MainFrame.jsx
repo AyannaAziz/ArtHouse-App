@@ -38,7 +38,7 @@ const MainFrame = () => {
         <Content style={{height:"100vh"}}> 
         <Switch>
         <Route path="/login">
-        <Col span={12} offset={6}> 
+        <Col span={12} offset={6} style={{paddingTop:"15rem"}}> 
           <Login/> 
           </Col>
         </Route>
