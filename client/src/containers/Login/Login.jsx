@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 // const Login = () => {
 //     return (
 //         <h1>This is the login page</h1>
-        
+
 //     )
 // }
 
 // export default Login;
 
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox } from "antd";
 import "./Login.css";
 
 const layout = {
@@ -30,11 +30,22 @@ const tailLayout = {
 
 const Login = () => {
   const onFinish = (values) => {
-    console.log('Success:', values);
+    console.log("Success:", values);
+
+    fetch("http://localhost:3001/api/users/login", {
+      method: "POST",
+      body: JSON.stringify({ usr_name: values.usr_name, password: values.password }),
+      headers: { 'Content-Type': 'application/json' }
+    });
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    console.log("Failed:", errorInfo);
+  };
+
+  const handleLogin = async () => {
+    const usr_name = "Ayanna";
+    const password = "kitty123";
   };
 
   return (
@@ -49,11 +60,11 @@ const Login = () => {
     >
       <Form.Item
         label="Username"
-        name="username"
+        name="usr_name"
         rules={[
           {
             required: true,
-            message: 'Please input your username!',
+            message: "Please input your username!",
           },
         ]}
       >
@@ -66,7 +77,7 @@ const Login = () => {
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: "Please input your password!",
           },
         ]}
       >
@@ -75,12 +86,15 @@ const Login = () => {
 
       <Form.Item {...tailLayout} name="remember" valuePropName="checked">
         <Checkbox>Remember me</Checkbox>
-        <Button type="link"> <Link to ="/signup">Sign up Here</Link></Button>
+        <Button type="link">
+          {" "}
+          <Link to="/signup">Sign up Here</Link>
+        </Button>
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
+        <Button type="primary" htmlType="submit" onClick={handleLogin}>
+          Login
         </Button>
       </Form.Item>
     </Form>

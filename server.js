@@ -2,13 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const favicon = require("serve-favicon");
 const path = require("path");
+const cors = require("cors");
 const app = express();
 const userRoute = require("./routes/userRoutes.js");
 const postRoute = require("./routes/postRoutes.js");
 
 
 const PORT = process.env.PORT || 3001;
-
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

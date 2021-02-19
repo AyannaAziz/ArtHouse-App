@@ -6,7 +6,8 @@ const { update } = require("../models/users.js");
 //initial post to send user data to db
 router.route("/")
 .post( (req, res) => {
-  const usr_name = req.body.usr_name.toLowerCase();
+  console.log(req.body);
+  const usr_name = req.body.name.toLowerCase();
   const profile_photo = req.body.profile_photo || "";
   const photos = req.body.photos || [];
   const email = req.body.email;
@@ -24,20 +25,20 @@ router.route("/")
     }
 
     //create user object
-    const user = Users.create(
-      {
-        usr_name,
-        profile_photo,
-        photos,
-        bio,
-        email,
-        password
-      },
-      (err, data) => {
-        if (err) return res.status(500).send(err.message);
-        res.status(200).json(data);
-      }
-    );
+  //   const user = Users.create(
+  //     {
+  //       usr_name,
+  //       profile_photo,
+  //       photos,
+  //       bio,
+  //       email,
+  //       password
+  //     },
+  //     (err, data) => {
+  //       if (err) return res.status(500).send(err.message);
+  //       res.status(200).json(data);
+  //     }
+    // );
   });
 })
 .get( (req, res) => {
@@ -95,7 +96,15 @@ router.get("/:user", (req, res) => {
       }
     }
   );
-});
+})
+
+router.post("/login", (req, res) => {
+  console.log(req.body);
+  console.log(req.body.usr_name);
+  console.log(req.body.password);
+}
+
+);
 
 
 

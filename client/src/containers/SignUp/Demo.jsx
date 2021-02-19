@@ -102,6 +102,19 @@ const Demo = () => {
 
   const onFinish = (values) => {
     console.log(values);
+
+  const data = {
+    name: values.name,
+    email: values.email, 
+    password: values.password,
+    photos: values.photos
+  }
+
+     fetch("http://localhost:3001/api/users", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    });
   };
 
   const onReset = () => {
@@ -113,6 +126,17 @@ const Demo = () => {
       note: "Hello world!",
       gender: "male",
     });
+  };
+
+  const normFile = (e) => {
+    console.log("Upload event:", e);
+
+    if (Array.isArray(e)) {
+      return e;
+    }
+
+    //change "return e && e.fileList" for
+    return e && e.fileList.slice(-1);
   };
 
   return (
@@ -190,6 +214,12 @@ const Demo = () => {
       </Form.Item>
 
       {/* upload avatar */}
+      <Form.Item
+        name="photos"
+        label="Photos"
+        valuePropName="fileList"
+        getValueFromEvent={normFile}
+      >
       <Upload
         name="avatar"
         listType="picture-card"
@@ -205,6 +235,7 @@ const Demo = () => {
           uploadButton
         )}
       </Upload>
+      </Form.Item>
 
       {/* end avi */}
 
