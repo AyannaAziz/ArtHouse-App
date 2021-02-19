@@ -13,16 +13,17 @@ const NavBar = () => {
   // const [login, setLogin] = useState("Loaded");
 
   return (
-    <div>
-      
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-      <Row justify= "space-between">
-        <Col> 
+    <Menu
+      theme="dark"
+      mode="horizontal"
+      defaultSelectedKeys={["1"]}
+    >
+     
         <Link to="/" style={{ color: "white" }}>
           ArtHouse
         </Link>
-        </Col>
-        <Col > 
+      
+      
         <Menu.Item key="1">
           <Link to="/login">Login</Link>
         </Menu.Item>
@@ -32,11 +33,9 @@ const NavBar = () => {
         <Menu.Item key="3">
           <Link to="/admin">Admin</Link>
         </Menu.Item>
-        </Col>
-        </Row>
-      </Menu>
       
-    </div>
+     
+    </Menu>
   );
 };
 

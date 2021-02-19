@@ -17,19 +17,19 @@ const SideNavStyling = {
   display: "flex",
 };
 
-const NavStyling = {
-  backgroundColor: "rgba(0, 0, 0, 0.4)",
-  width: "100%",
-  height: "100px",
-  display: "flex",
+// const NavStyling = {
+//   backgroundColor: "rgba(0, 0, 0, 0.4)",
+//   width: "100%",
+//   height: "100px",
+//   display: "flex",
   
-};
+// };
 const MainFrame = () => {
   const { Header, Footer, Sider, Content } = Layout;
   return (
     <Router> 
     <Layout>
-      <Header style={NavStyling}></Header>
+      <Header></Header>
       <NavBar />
       <Layout>
         <Sider style={SideNavStyling}>

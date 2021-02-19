@@ -7,22 +7,18 @@ import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import Login from "../../containers/Login/Login";
 import Feed from "../../containers/Feed/Feed";
 import styles from "./SideNav.css";
-
+import { Layout, Menu, Breadcrumb, Row, Col } from "antd";
 
 const SideNav = () => {
-
   return (
-      <div className={styles.wrapper}>
-        <ul className="sidenavUl">
-        <li>
-          <Link to="/login">About</Link>
-        </li>
-        <li>
-          <Link to="/feed">SEE WHO'S USING ARTHOUSE</Link>
-        </li>
-        </ul>
-      </div>
-
+    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+      <Menu.Item key="1">
+        <Link to="/login">About</Link>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <Link to="/login">View Users</Link>
+      </Menu.Item>
+    </Menu>
   );
 };
 
