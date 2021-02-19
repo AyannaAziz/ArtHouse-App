@@ -11,7 +11,7 @@ import { Layout, Menu, Breadcrumb, Row, Col } from "antd";
 
 const SideNav = () => {
   return (
-    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+    <Menu theme="dark" mode="vertical" defaultSelectedKeys={["1"]} style={{paddingTop: "8rem"}}>
       <Menu.Item key="1">
         <Link to="/login">About</Link>
       </Menu.Item>

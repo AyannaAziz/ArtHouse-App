@@ -13,28 +13,23 @@ const NavBar = () => {
   // const [login, setLogin] = useState("Loaded");
 
   return (
-    <Menu
-      theme="dark"
-      mode="horizontal"
-      defaultSelectedKeys={["1"]}
-    >
-     
-        <Link to="/" style={{ color: "white" }}>
-          ArtHouse
-        </Link>
+    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
       
-      
-        <Menu.Item key="1">
-          <Link to="/login">Login</Link>
-        </Menu.Item>
-        <Menu.Item key="2">
-          <Link to="/feed">Feed</Link>
-        </Menu.Item>
-        <Menu.Item key="3">
-          <Link to="/admin">Admin</Link>
-        </Menu.Item>
-      
-     
+       
+          <Link to="/" style={{ color: "white" }}>
+            ArtHouse
+          </Link>
+
+          <Menu.Item key="1">
+            <Link to="/login">Login</Link>
+          </Menu.Item>
+
+          <Menu.Item key="2">
+            <Link to="/feed">Feed</Link>
+          </Menu.Item>
+          <Menu.Item key="3">
+            <Link to="/admin">Admin</Link>
+          </Menu.Item>
     </Menu>
   );
 };

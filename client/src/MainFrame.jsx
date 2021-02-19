@@ -10,12 +10,12 @@ import Demo from './containers/SignUp/Demo';
 
 import { Row, Col } from 'antd';
 
-const SideNavStyling = {
-  backgroundColor: "rgba(0, 0, 0, 0.4)",
-  width: "80%",
-  height: "1000px",
-  display: "flex",
-};
+// const SideNavStyling = {
+//   backgroundColor: "rgba(0, 0, 0, 0.4)",
+//   width: "80%",
+//   height: "1000px",
+//   display: "flex",
+// };
 
 // const NavStyling = {
 //   backgroundColor: "rgba(0, 0, 0, 0.4)",
@@ -29,16 +29,18 @@ const MainFrame = () => {
   return (
     <Router> 
     <Layout>
-      <Header></Header>
-      <NavBar />
+      <Header style={{padding: "5rem"}} > <NavBar /></Header>
+      
       <Layout>
-        <Sider style={SideNavStyling}>
+        <Sider >
           <SideNav />
         </Sider>
-        <Content> 
+        <Content style={{height:"100vh"}}> 
         <Switch>
         <Route path="/login">
+        <Col span={12} offset={6}> 
           <Login/> 
+          </Col>
         </Route>
         <Route path="/feed">
         <Col span={12} offset={6}>  <Feed /></Col>
