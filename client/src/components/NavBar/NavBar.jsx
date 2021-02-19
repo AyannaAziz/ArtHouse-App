@@ -4,6 +4,7 @@ import Login from "../../containers/Login/Login";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import Feed from "../../containers/Feed/Feed";
 import Signup from "../../containers/SignUp/SignUp";
+import { Layout, Menu, Breadcrumb, Row, Col } from "antd";
 
 import Admin from "../../containers/Admin/Admin";
 
@@ -12,21 +13,30 @@ const NavBar = () => {
   // const [login, setLogin] = useState("Loaded");
 
   return (
-
-      <div className={styles.wrapper}>
-        <h1>ArtHouse</h1>
-        <ul className = "navbarUl"> 
-        <li> 
+    <div>
+      
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+      <Row justify= "space-between">
+        <Col> 
+        <Link to="/" style={{ color: "white" }}>
+          ArtHouse
+        </Link>
+        </Col>
+        <Col > 
+        <Menu.Item key="1">
           <Link to="/login">Login</Link>
-        </li>
-        <li>
+        </Menu.Item>
+        <Menu.Item key="2">
           <Link to="/feed">Feed</Link>
-        </li>
-        <li>
+        </Menu.Item>
+        <Menu.Item key="3">
           <Link to="/admin">Admin</Link>
-        </li>
-        </ul>
-      </div>
+        </Menu.Item>
+        </Col>
+        </Row>
+      </Menu>
+      
+    </div>
   );
 };
 

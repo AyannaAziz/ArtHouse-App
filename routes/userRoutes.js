@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const router = require("express").Router();
 const Users = require("../models/users.js");
 const { update } = require("../models/users.js");
+const cloudinary = require("../utils/cloudinary")
 
 //initial post to send user data to db
 router.route("/")
@@ -13,6 +14,7 @@ router.route("/")
   const email = req.body.email;
   const password = req.body.password;
   const bio = req.body.bio || "";
+ 
 
   //queries db to see if the name entered matches any existing name, throws err if true
   Users.find({ usr_name }, (err, data) => {
