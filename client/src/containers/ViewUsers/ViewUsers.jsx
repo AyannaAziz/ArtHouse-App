@@ -26,7 +26,7 @@ const fetchPeople = () => {
       <div className="row">
         <div className="col">
           <h1 className="center-align">
-            ArtHouse Users Profile
+            See Who's on ArtHouse 
           </h1>
           <div className="user-prog-holder">
             {people ? people.map((item) => { 

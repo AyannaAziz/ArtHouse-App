@@ -39,7 +39,7 @@ connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
 });
 
-// app.use(express.static("client/build"));
+app.use(express.static("client/build"));
 
 //telling express to read json data 
 app.use(express.json())

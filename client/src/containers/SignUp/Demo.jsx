@@ -7,7 +7,7 @@ import { Upload, message } from 'antd';
 import "./SignUp.css";
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 
-
+const { TextArea } = Input;
 const { Option } = Select;
 const layout = {
   labelCol: {
@@ -62,10 +62,6 @@ const Demo = () => {
       getBase64(info.file.originFileObj, imageUrl => {
         setimageUrl(info.file.originFileObj)
         setLoading(false)
-        // this.setState({
-        //   imageUrl,
-        //   loading: false,
-        // }
       });
     }
   };
@@ -77,29 +73,7 @@ const Demo = () => {
       </div>
     );
 
-  const onGenderChange = (value) => {
-    console.log("in the switch");
-    switch (value) {
-      case "male":
-        form.setFieldsValue({
-          note: "Hi, man!",
-        });
-        return;
-
-      case "female":
-        form.setFieldsValue({
-          note: "Hi, lady!",
-        });
-        return;
-
-      case "other":
-        form.setFieldsValue({
-          note: "Hi there!",
-        });
-        return;
-    }
-  };
-
+    // called once data in input in form, sends to db
   const onFinish = (values) => {
     // Use this to send to Server
     console.log('This is the onFinish function: ', values);
@@ -128,22 +102,6 @@ const Demo = () => {
     }
   };
 
-  // const onFinish = (values) => {
-  //   console.log(values);
-
-  // const data = {
-  //   name: values.name,
-  //   email: values.email, 
-  //   password: values.password,
-  //   photos: values.photos
-  // }
-
-  //    fetch("http://localhost:3001/api/users", {
-  //     method: "POST",
-  //     body: JSON.stringify(data),
-  //     headers: { 'Content-Type': 'application/json' }
-  //   });
-  // };
 
   const onReset = () => {
     form.resetFields();
@@ -239,6 +197,19 @@ const Demo = () => {
         ]}
       >
         <Input.Password />
+      </Form.Item>
+      <Form.Item
+        name="bio"
+        label="Bio"
+        rules={[
+          {
+            required: true,
+            message: "Please input your bio!",
+          },
+        ]}
+        hasFeedback
+      >
+       <TextArea rows={4} />
       </Form.Item>
 
       {/* upload avatar */}

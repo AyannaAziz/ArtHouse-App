@@ -5,9 +5,33 @@ const { update } = require("../models/users.js");
 const { cloudinary } = require("../utils/cloudinary")
 
 router.post("/login", (req, res) => {
-  console.log(req.body);
-  console.log(req.body.usr_name);
-  console.log(req.body.password);
+
+  // route to find username for login authentication
+  Users.findOne(
+    {
+      usr_name: req.body.usr_name,
+    },
+    (error, data) => {
+      if (error) {
+        res.json({message:"Please try again"});
+      } else {
+        console.log("username valid")
+        Users.find({usr_name: req.body.usr_name})
+        .where({password: req.body.password}).exec(() => {
+         if (error) {
+           res.json({message:"Incorrect Credentials"})
+         } else {
+          console.log("correct creds")
+           res.json({message:true, person: req.body.usr_name})
+         }
+        })
+      }
+    }
+  );
+
+  // console.log(req.body);
+  // console.log(req.body.usr_name);
+  // console.log(req.body.password);
 }
 
 );
