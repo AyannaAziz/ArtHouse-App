@@ -1,15 +1,18 @@
-import React from "react";
+import React from 'react';
 
 const ViewUsers = () => {
-  <div className="container">
+
+  return (
+    <div className="container">
     <div className="row">
       <div className="col">
         <h1 className="center-align">
-          Look at users here.
+          Look at arthouse users here.
         </h1>
       </div>
     </div>
-  </div>;
+  </div>
+  )
 };
 
 export default ViewUsers;

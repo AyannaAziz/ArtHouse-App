@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NavBar.module.css";
-import Login from "../../containers/Login/Login";
+// import Login from "../../containers/Login/Login";
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
-import Feed from "../../containers/Feed/Feed";
-import Signup from "../../containers/SignUp/SignUp";
+// import Feed from "../../containers/Feed/Feed";
+// import Signup from "../../containers/SignUp/SignUp";
 import { Layout, Menu, Breadcrumb, Row, Col } from "antd";
 
 import Admin from "../../containers/Admin/Admin";

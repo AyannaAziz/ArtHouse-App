@@ -5,10 +5,15 @@ import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import Login from "./containers/Login/Login";
 import Admin from "./containers/Admin/Admin";
 import Feed from "./containers/Feed/Feed";
-import SignUp from './containers/SignUp/SignUp';
+
 import Demo from './containers/SignUp/Demo';
 
 import { Row, Col } from 'antd';
+import About from "./containers/About/About";
+import UserProfile from "./containers/UserProfile/UserProfile";
+import ViewUsers from "./containers/ViewUsers/ViewUsers";
+
+
 
 // const SideNavStyling = {
 //   backgroundColor: "rgba(0, 0, 0, 0.4)",
@@ -24,6 +29,7 @@ import { Row, Col } from 'antd';
 //   display: "flex",
   
 // };
+
 const MainFrame = () => {
   const { Header, Footer, Sider, Content } = Layout;
   return (
@@ -51,10 +57,19 @@ const MainFrame = () => {
         <Route path ="/signup">
           <Demo />
         </Route>
+        <Route path ="/about">
+          <About />
+        </Route>
+        <Route path ="/userprofile">
+          <UserProfile />
+        </Route>
+        <Route path ="/viewusers">
+          <ViewUsers />
+        </Route>
       </Switch>
         </Content>
       </Layout>
-      <Footer>Footer</Footer>
+      <Footer style={{backgroundColor: "black"}}>Footer</Footer>
     </Layout>
     </Router>
   );
