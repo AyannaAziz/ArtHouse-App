@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import { Card } from 'antd';
+import "./UserProfile.css";
 
 
-
+// creating users profile component to show users their saved information. 
 const UserProfile = () => {
 const [people, setPeople] = useState([])
 const fetchPeople = () => {
@@ -10,10 +12,6 @@ const fetchPeople = () => {
   .then(response => response.json())
   .then((data) => {
     console.log(data)
-    // setPeople( (prev) => {
-    //   return [...prev,...data]
-    // })
-    
    setPeople(data)
   }) 
 
@@ -22,18 +20,24 @@ const fetchPeople = () => {
   useEffect(() => {
     fetchPeople()
   }, [])
+
   return (
       <div className="container">
       <div className="row">
         <div className="col">
           <h1 className="center-align">
-            Look at profile here.
+            ArtHouse Users Profile
           </h1>
-          {people.map((item) => {
-           <li key={item._id,}>  item.usr_name </li>
-            
-             
-          })}
+          <div className="user-prog-holder">
+            {people ? people.map((item) => { 
+              return (<div key={item._id} className="user-prof">
+                <Card size="small" title="ArtHouse Users" style={{ width: 270, display: "inline-block" }}>
+                  <p>User Name: <span className="user-prof-txt">{item.usr_name} </span></p>
+                  <p>Email: <span className="user-prof-txt">{item.email} </span></p>
+                </Card>
+              </div>)
+            }) : " "}  
+          </div>
         </div>
       </div>
     </div>

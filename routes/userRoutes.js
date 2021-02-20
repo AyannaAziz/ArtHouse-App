@@ -4,6 +4,14 @@ const Users = require("../models/users.js");
 const { update } = require("../models/users.js");
 const { cloudinary } = require("../utils/cloudinary")
 
+router.post("/login", (req, res) => {
+  console.log(req.body);
+  console.log(req.body.usr_name);
+  console.log(req.body.password);
+}
+
+);
+
 //initial post to send user data to db
 router.route("/")
 .post( async (req, res) => {
@@ -70,11 +78,12 @@ router.route("/")
     if (error) {
       return res.send(error);
     } else {
-      console.log(res.json(data))
+      // console.log(res.json(data))
       return res.json(data);
     }
   });
 }) 
+
 .put( (req, res) => {
   //PUT request allows users to update one or many any fields
   const usr_name = req.body.usr_name.toLowerCase();
@@ -122,13 +131,7 @@ router.get("/:user", (req, res) => {
   );
 })
 
-router.post("/login", (req, res) => {
-  console.log(req.body);
-  console.log(req.body.usr_name);
-  console.log(req.body.password);
-}
 
-);
 
 
 

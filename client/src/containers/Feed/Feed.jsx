@@ -8,15 +8,16 @@ import { Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom"
  
+// creating Feed container 
 const Feed = () => {
     return(
   <div>
     
    <Row>
    
-      <Col span={8}> <Button type="primary">Primary Button</Button></Col>
+      <Col span={8}> <Button type="primary">New Post!</Button></Col>
       <Col span={8} offset={8}>
-      <Input placeholder="default size" prefix={<UserOutlined />} />
+      <Input placeholder="Search for posts here" prefix={<UserOutlined />} />
       </Col>
     </Row>
     <Row className="site-card-border-less-wrapper">

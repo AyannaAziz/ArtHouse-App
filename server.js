@@ -10,7 +10,7 @@ const postRoute = require("./routes/postRoutes.js");
 
 const PORT = process.env.PORT || 3001;
 
-
+// coneccting to mongo db
 mongoose.connect(
   process.env.MONGODB_URI ||
     "mongodb+srv://aazizz:kitty123@cluster0.uvak5.mongodb.net/Arthouse?retryWrites=true&w=majority",
@@ -22,7 +22,7 @@ mongoose.connect(
   }
 );
 
-
+//using cors to make an ajax request to a server
 app.use(cors())
 
 app.use(express.json({ limit: '50mb' }));

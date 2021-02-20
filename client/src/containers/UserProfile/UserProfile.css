@@ -1,0 +1,21 @@
+.user-prog-holder {
+    margin-top: 2em;
+    margin-left: 1em;
+}
+
+.user-prof {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.user-prof-txt {
+    color:darkcyan;
+    font-size: medium;
+    font-style: oblique;
+}
+
+h1 {
+   text-align: center;
+   margin-top: 1em;
+}

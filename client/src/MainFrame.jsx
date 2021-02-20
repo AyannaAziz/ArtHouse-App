@@ -14,22 +14,7 @@ import UserProfile from "./containers/UserProfile/UserProfile";
 import ViewUsers from "./containers/ViewUsers/ViewUsers";
 
 
-
-// const SideNavStyling = {
-//   backgroundColor: "rgba(0, 0, 0, 0.4)",
-//   width: "80%",
-//   height: "1000px",
-//   display: "flex",
-// };
-
-// const NavStyling = {
-//   backgroundColor: "rgba(0, 0, 0, 0.4)",
-//   width: "100%",
-//   height: "100px",
-//   display: "flex",
-  
-// };
-
+// creating main frame object to import components, will display in App.js
 const MainFrame = () => {
   const { Header, Footer, Sider, Content } = Layout;
   return (
@@ -69,7 +54,7 @@ const MainFrame = () => {
       </Switch>
         </Content>
       </Layout>
-      <Footer style={{backgroundColor: "black"}}>Footer</Footer>
+      <Footer style={{backgroundColor: "grey", textAlign: 'center'}}>ArtHouse 2021. All rights reserved.</Footer>
     </Layout>
     </Router>
   );
