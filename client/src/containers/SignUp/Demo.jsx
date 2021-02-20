@@ -101,21 +101,49 @@ const Demo = () => {
   };
 
   const onFinish = (values) => {
-    console.log(values);
+    // Use this to send to Server
+    console.log('This is the onFinish function: ', values);
 
-  const data = {
-    name: values.name,
-    email: values.email, 
-    password: values.password,
-    photos: values.photos
-  }
+   
 
-     fetch("http://localhost:3001/api/users", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' }
-    });
+    try {
+      let updatedValues;
+      const reader = new FileReader();
+      reader.readAsDataURL(values.photos[0].originFileObj);
+      reader.addEventListener("load", async function () {
+        // convert image file to base64 string
+         updatedValues = { ...values, photos: reader.result }
+        console.log(updatedValues);
+        await fetch('http://localhost:3001/api/users', {
+          method: 'POST',
+          body: JSON.stringify({ data: updatedValues }),
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }, false);
+
+  
+    } catch (err) {
+      console.error(err);
+      
+    }
   };
+
+  // const onFinish = (values) => {
+  //   console.log(values);
+
+  // const data = {
+  //   name: values.name,
+  //   email: values.email, 
+  //   password: values.password,
+  //   photos: values.photos
+  // }
+
+  //    fetch("http://localhost:3001/api/users", {
+  //     method: "POST",
+  //     body: JSON.stringify(data),
+  //     headers: { 'Content-Type': 'application/json' }
+  //   });
+  // };
 
   const onReset = () => {
     form.resetFields();
@@ -225,7 +253,7 @@ const Demo = () => {
         listType="picture-card"
         className="avatar-uploader"
         showUploadList={false}
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        action="https://localhost:3001"
         beforeUpload={beforeUpload}
         onChange={handleChange}
       >

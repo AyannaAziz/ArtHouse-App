@@ -7,7 +7,7 @@ const users = new Schema ({
     email: String,
     password: String,
     profile_photo: String, 
-    photos: Array,
+    photos: String,
     bio: String
 })
 

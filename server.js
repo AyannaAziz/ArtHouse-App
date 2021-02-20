@@ -9,9 +9,7 @@ const postRoute = require("./routes/postRoutes.js");
 
 
 const PORT = process.env.PORT || 3001;
-app.use(cors());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 mongoose.connect(
   process.env.MONGODB_URI ||
@@ -24,6 +22,13 @@ mongoose.connect(
   }
 );
 
+
+app.use(cors())
+
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({limit: '50mb', extended: true }));
+
+
 const connection = mongoose.connection;
 
 connection.on("connected", () => {
@@ -34,7 +39,7 @@ connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
 });
 
-app.use(express.static("client/build"));
+// app.use(express.static("client/build"));
 
 //telling express to read json data 
 app.use(express.json())
