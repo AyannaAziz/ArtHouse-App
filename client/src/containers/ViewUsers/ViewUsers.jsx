@@ -34,6 +34,7 @@ const fetchPeople = () => {
                 <Card size="small" title="ArtHouse Users" style={{ width: 270, display: "inline-block" }}>
                   <p>User Name: <span className="user-prof-txt">{item.usr_name} </span></p>
                   <p>Email: <span className="user-prof-txt">{item.email} </span></p>
+                  <p>Bio: <span className="user-prof-txt">{item.bio} </span></p>
                 </Card>
               </div>)
             }) : " "}  

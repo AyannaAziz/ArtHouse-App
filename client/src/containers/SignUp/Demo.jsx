@@ -107,12 +107,6 @@ const Demo = () => {
     form.resetFields();
   };
 
-  const onFill = () => {
-    form.setFieldsValue({
-      note: "Hello world!",
-      gender: "male",
-    });
-  };
 
   const normFile = (e) => {
     console.log("Upload event:", e);
