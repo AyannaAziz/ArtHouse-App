@@ -31,7 +31,7 @@ const fetchPeople = () => {
           <div className="user-prog-holder">
             {people ? people.map((item) => { 
               return (<div key={item._id} className="user-prof">
-                <Card size="small" title="ArtHouse Users" style={{ width: 270, display: "inline-block" }}>
+                <Card size="small" title="ArtHouse User" style={{ width: 270, display: "inline-block" }}>
                   <p>User Name: <span className="user-prof-txt">{item.usr_name} </span></p>
                   <p>Email: <span className="user-prof-txt">{item.email} </span></p>
                   <p>Bio: <span className="user-prof-txt">{item.bio} </span></p>
