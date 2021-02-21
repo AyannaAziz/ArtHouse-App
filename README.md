@@ -24,6 +24,7 @@ ArtHouse is a web app that aims to connect miche artists and creatives. Users ca
 * Express
 * Mongoose 
 * MongoDB
+* Ant Design 
 
 
 ## Demo
