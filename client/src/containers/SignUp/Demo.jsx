@@ -232,28 +232,6 @@ const Demo = () => {
 
       {/* end avi */}
 
-      <Form.Item
-        noStyle
-        shouldUpdate={(prevValues, currentValues) =>
-          prevValues.gender !== currentValues.gender
-        }
-      >
-        {({ getFieldValue }) => {
-          return getFieldValue("gender") === "other" ? (
-            <Form.Item
-              name="customizeGender"
-              label="Customize Gender"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-          ) : null;
-        }}
-      </Form.Item>
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
           Submit
